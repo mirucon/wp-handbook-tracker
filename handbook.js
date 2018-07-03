@@ -1,6 +1,11 @@
 const axios = require('axios')
 const program = require('commander')
+const mkdirp = require('mkdirp')
 const fs = require('fs')
+
+mkdirp('api/v1', err => {
+  if (err) console.log(err)
+})
 
 const getTotalPages = async (team, handbook) => {
   handbook = handbook ? handbook : 'handbook'
@@ -37,7 +42,7 @@ const generateJson = async (team, handbook) => {
       })
   }
 
-  fs.writeFile(`handbook.json`, JSON.stringify(data), err => {
+  fs.writeFile(`api/v1/${team}-${handbook}.json`, JSON.stringify(data), err => {
     if (err) throw err
   })
 }
