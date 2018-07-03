@@ -11,12 +11,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "commander": "^2.16.0",
-    "turndown": "^4.0.2"
+    "commander": "^2.16.0"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
-    "eslint-config-prettier": "^2.9.0",
     "prettier": "^1.13.7"
   },
   "prettier": {
