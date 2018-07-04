@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "prettier --write *.js",
-    "test": "prettier --list-different handbook.js"
+    "test": "prettier --list-different cli.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

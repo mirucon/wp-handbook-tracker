@@ -2,10 +2,16 @@
 
 [![Build Status](https://travis-ci.org/mirucon/handbook-tracker.svg?branch=master)](https://travis-ci.org/mirucon/handbook-tracker)
 
-## `handbook` command
+## Install
 
 ```bash
-$ handbook <team>
+$ npm i -g https://github.com/mirucon/handbook-tracker.git
+```
+
+## `handbook-tracker` command
+
+```bash
+$ handbook-tracker <team>
 ```
 
 ### options
@@ -17,7 +23,7 @@ $ handbook <team>
 Get Meetup Handbook
 
 ```bash
-$ handbook community --handbook meetup-handbook 
+$ handbook-tracker community --handbook meetup-handbook
 ```
 
 ## Schema

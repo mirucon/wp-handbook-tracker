@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-'use strict';
+'use strict'
 
 const axios = require('axios')
 const program = require('commander')
