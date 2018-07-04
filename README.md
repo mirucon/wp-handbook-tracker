@@ -1,5 +1,7 @@
 # handbook-tracker
 
+[![Build Status](https://travis-ci.org/mirucon/handbook-tracker.svg?branch=master)](https://travis-ci.org/mirucon/handbook-tracker)
+
 ## `handbook` command
 
 ```bash
