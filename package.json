@@ -2,7 +2,7 @@
   "name": "handbook-tracker",
   "version": "1.0.0",
   "description": "Handbook changes tracker",
-  "main": "index.js",
+  "bin": "cli.js",
   "repository": "https://github.com/mirucon/handbook-tracker",
   "author": "Toshihiro Kanai",
   "license": "MIT",
