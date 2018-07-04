@@ -4,10 +4,11 @@
   "description": "Handbook changes tracker",
   "main": "index.js",
   "repository": "https://github.com/mirucon/handbook-tracker",
-  "author": "Toshihiro Kanai",
+  "author": "Toshihiro Kanai <i@miruc.co>",
   "license": "MIT",
   "scripts": {
-    "lint": "prettier --write *.js"
+    "lint": "prettier --write *.js",
+    "test": "prettier --list-different handbook.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
