@@ -53,7 +53,7 @@ const generateJson = async (team, handbook) => {
 
 program
   .version('1.0.0')
-  .command('handbook <team>')
+  .arguments('<team>')
   .description('Generate a menu JSON file for WordPress.org handbook')
   .option('--handbook <handbook>', 'Specify handbook name')
   .action((team, options) => {
