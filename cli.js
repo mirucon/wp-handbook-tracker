@@ -8,8 +8,6 @@ const fs = require('fs')
 const _ = require( 'lodash' )
 const WPAPI = require( 'wpapi' )
 
-const wp = new WPAPI( { endpoint: 'https://make.wordpress.org/cli/wp-json' } );
-
 mkdirp( 'api/v1', err => {
   if ( err ) console.log( err )
 } )
@@ -32,6 +30,8 @@ const getAll = ( request ) => {
 
 const generateJson = async (team, handbook) => {
   handbook = handbook ? handbook : 'handbook'
+
+  const wp = new WPAPI( { endpoint: `https://make.wordpress.org/${team}/wp-json` } );
   wp.handobooks = wp.registerRoute( 'wp/v2', `/${handbook}/(?P<id>)` );
 
   getAll( wp.handobooks() ).then( ( allPosts ) => {
