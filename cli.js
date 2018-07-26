@@ -32,7 +32,7 @@ const getAll = ( request ) => {
 
 const generateJson = async (team, handbook) => {
   handbook = handbook ? handbook : 'handbook'
-  wp.handobooks = wp.registerRoute( 'wp/v2', '/' + handbook + '/(?P<id>)' );
+  wp.handobooks = wp.registerRoute( 'wp/v2', `/${handbook}/(?P<id>)` );
 
   getAll( wp.handobooks() ).then( ( allPosts ) => {
     const data = [];
