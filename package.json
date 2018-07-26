@@ -13,7 +13,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "commander": "^2.16.0",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "wpapi": "^1.1.2"
   },
   "devDependencies": {
     "prettier": "^1.13.7"
