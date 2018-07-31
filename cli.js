@@ -33,13 +33,13 @@ const generateJson = async (team, handbook, subdomain) => {
   const wp = new WPAPI({
     endpoint: `https://${subdomain}wordpress.org/${team}/wp-json`
   })
-  wp.handobooks = wp.registerRoute('wp/v2', `/${handbook}/(?P<id>)`)
+  wp.handbooks = wp.registerRoute('wp/v2', `/${handbook}/(?P<id>)`)
 
   console.log(
     `Connecting to https://${subdomain}wordpress.org/${team}/wp-json/wp/v2/${handbook}/`
   )
 
-  getAll(wp.handobooks()).then(allPosts => {
+  getAll(wp.handbooks()).then(allPosts => {
     const data = []
     let rootPath = ''
     for (const item of allPosts) {
