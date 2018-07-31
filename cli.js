@@ -18,11 +18,9 @@ const getAll = request => {
       return response
     }
     // Request the next page and return both responses as one collection
-    return Promise.all([response, getAll(response._paging.next)]).then(function(
-      responses
-    ) {
-      return _.flatten(responses)
-    })
+    return Promise.all([response, getAll(response._paging.next)]).then(
+      responses => _.flatten(responses)
+    )
   })
 }
 
@@ -36,10 +34,22 @@ const generateJson = async (team, handbook) => {
 
   getAll(wp.handobooks()).then(allPosts => {
     const data = []
+    let rootPath = ''
     for (const item of allPosts) {
+      if (parseInt(item.parent) === 0) {
+        rootPath = item.link.split(item.slug)[0]
+        break
+      } else {
+        rootPath = `https://make.wordpress.org/${team}/${handbook}/`
+      }
+    }
+    for (const item of allPosts) {
+      const path = item.link.split(rootPath)[1]
       data.push({
         slug: item.slug,
+        id: item.id,
         link: item.link,
+        path: path,
         modified: item.modified_gmt,
         menu_order: item.menu_order,
         parent: item.parent
