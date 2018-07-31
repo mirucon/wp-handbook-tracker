@@ -25,7 +25,6 @@ const getAll = request => {
 }
 
 const generateJson = async (team, handbook, subdomain) => {
-  console.log(subdomain)
   handbook = handbook ? handbook : 'handbook'
   subdomain = `${
     subdomain ? (subdomain === 'w.org' ? '' : subdomain) : 'make'
@@ -35,6 +34,10 @@ const generateJson = async (team, handbook, subdomain) => {
     endpoint: `https://${subdomain}wordpress.org/${team}/wp-json`
   })
   wp.handobooks = wp.registerRoute('wp/v2', `/${handbook}/(?P<id>)`)
+
+  console.log(
+    `Connecting to https://${subdomain}wordpress.org/${team}/wp-json/wp/v2/${handbook}/`
+  )
 
   getAll(wp.handobooks()).then(allPosts => {
     const data = []
@@ -63,7 +66,11 @@ const generateJson = async (team, handbook, subdomain) => {
     const fileName = team ? `${team}-${handbook}` : handbook
 
     fs.writeFile(`api/v1/${fileName}.json`, JSON.stringify(data), err => {
-      if (err) throw err
+      if (err) {
+        throw err
+      } else {
+        console.log('Done!')
+      }
     })
   })
 }
