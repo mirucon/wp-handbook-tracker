@@ -24,11 +24,15 @@ const getAll = request => {
   })
 }
 
-const generateJson = async (team, handbook) => {
+const generateJson = async (team, handbook, subdomain) => {
+  console.log(subdomain)
   handbook = handbook ? handbook : 'handbook'
+  subdomain = `${
+    subdomain ? (subdomain === 'w.org' ? '' : subdomain) : 'make'
+  }.`
 
   const wp = new WPAPI({
-    endpoint: `https://make.wordpress.org/${team}/wp-json`
+    endpoint: `https://${subdomain}wordpress.org/${team}/wp-json`
   })
   wp.handobooks = wp.registerRoute('wp/v2', `/${handbook}/(?P<id>)`)
 
@@ -40,7 +44,7 @@ const generateJson = async (team, handbook) => {
         rootPath = item.link.split(item.slug)[0]
         break
       } else {
-        rootPath = `https://make.wordpress.org/${team}/${handbook}/`
+        rootPath = `https://${subdomain}wordpress.org/${team}/${handbook}/`
       }
     }
     for (const item of allPosts) {
@@ -56,13 +60,11 @@ const generateJson = async (team, handbook) => {
       })
     }
 
-    fs.writeFile(
-      `api/v1/${team}-${handbook}.json`,
-      JSON.stringify(data),
-      err => {
-        if (err) throw err
-      }
-    )
+    const fileName = team ? `${team}-${handbook}` : handbook
+
+    fs.writeFile(`api/v1/${fileName}.json`, JSON.stringify(data), err => {
+      if (err) throw err
+    })
   })
 }
 
@@ -70,9 +72,16 @@ program
   .version('1.0.0')
   .arguments('<team>')
   .description('Generate a menu JSON file for WordPress.org handbook')
-  .option('--handbook <handbook>', 'Specify handbook name')
+  .option(
+    '-b, --handbook <handbook>',
+    'Specify handbook name (default "handbook")'
+  )
+  .option(
+    '-s, --sub-domain <subdomain>',
+    'Specify subdomain, for example, "developer" for developer.w.org, "w.org" for w.org (default "make")'
+  )
   .action((team, options) => {
-    generateJson(team, options.handbook)
+    generateJson(team, options.handbook, options.subDomain)
   })
 
 program.parse(process.argv)
