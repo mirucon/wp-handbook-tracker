@@ -16,7 +16,8 @@ $ handbook-tracker <team>
 
 ### options
 
-- `--handbook` &lt;handbook&gt;  Specify handbook name
+* `-b, --handbook` &lt;handbook&gt;  Specify handbook name. (Default "handbook")
+* `-s, --sub-domain` &lt;sub-domain&gt; Specify subdomain name. e.g. "developer" for developer.w.org, "w.org" for w.org (Default "make")
 
 ### Example
 
@@ -26,13 +27,21 @@ Get Meetup Handbook
 $ handbook-tracker community --handbook meetup-handbook
 ```
 
+Get theme developer Handbook
+
+```bash
+$ handbook-tracker '' --handbook theme-handbook --sub-domain developer
+```
+
 ## Schema
 
 ```json
 [
   {
     "slug": "slug",
+    "id": "id",
     "link": "link",
+    "path": "relative_path_to_link",
     "modified": "modified_date_GMT",
     "menu_order": "menu_order",
     "parent": "parent"
