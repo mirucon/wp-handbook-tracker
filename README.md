@@ -1,17 +1,24 @@
-# handbook-tracker
+# wp-handbook-tracker
 
 [![Build Status](https://travis-ci.org/mirucon/handbook-tracker.svg?branch=master)](https://travis-ci.org/mirucon/handbook-tracker)
+[![npm version](https://badge.fury.io/js/handbook-tracker.svg)](https://www.npmjs.com/package/wp-handbook-tracker)
 
 ## Install
 
 ```bash
-$ npm i -g https://github.com/mirucon/handbook-tracker.git
+$ npm i -g wp-handbook-tracker
+
+# Or
+
+$ yarn add wp-handbook-tracker
 ```
 
-## `handbook-tracker` command
+For quick run, just use `$ npx wp-handbook-tracker <team>`.
+
+## `wp-handbook-tracker` command
 
 ```bash
-$ handbook-tracker <team>
+$ wp-handbook-tracker <team>
 ```
 
 ### options
@@ -24,13 +31,13 @@ $ handbook-tracker <team>
 Get Meetup Handbook
 
 ```bash
-$ handbook-tracker community --handbook meetup-handbook
+$ wp-handbook-tracker community --handbook meetup-handbook
 ```
 
 Get theme developer Handbook
 
 ```bash
-$ handbook-tracker '' --handbook theme-handbook --sub-domain developer
+$ wp-handbook-tracker '' --handbook theme-handbook --sub-domain developer
 ```
 
 ## Schema

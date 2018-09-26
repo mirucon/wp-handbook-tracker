@@ -1,8 +1,7 @@
 {
-  "name": "handbook-tracker",
+  "name": "wp-handbook-tracker",
   "version": "1.0.0",
-  "description": "Handbook changes tracker",
-  "bin": "cli.js",
+  "description": "Creates WordPress Handbook menu JSON to track changes in the handbook.",
   "repository": "https://github.com/mirucon/handbook-tracker",
   "author": "Toshihiro Kanai <i@miruc.co>",
   "license": "MIT",
@@ -22,5 +21,8 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "bin": {
+    "wp-handbook-tracker": "./cli.js"
   }
 }
