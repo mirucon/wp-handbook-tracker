@@ -10,13 +10,13 @@
     "test": "prettier --list-different cli.js"
   },
   "dependencies": {
-    "commander": "^2.16.0",
-    "lodash": "^4.17.10",
+    "commander": "^2.20.0",
+    "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
-    "wpapi": "^1.1.2"
+    "wpapi": "^1.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.13.7"
+    "prettier": "^1.17.0"
   },
   "prettier": {
     "semi": false,
