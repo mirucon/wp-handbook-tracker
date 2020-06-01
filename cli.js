@@ -8,19 +8,20 @@ const fs = require('fs')
 const _ = require('lodash')
 const WPAPI = require('wpapi')
 
-mkdirp('api/v1', err => {
+mkdirp('api/v1', (err) => {
   if (err) console.log(err)
 })
 
-const getAll = request => {
-  return request.then(response => {
+const getAll = (request) => {
+  return request.then((response) => {
     if (!response._paging || !response._paging.next) {
       return response
     }
     // Request the next page and return both responses as one collection
-    return Promise.all([response, getAll(response._paging.next)]).then(
-      responses => _.flatten(responses)
-    )
+    return Promise.all([
+      response,
+      getAll(response._paging.next),
+    ]).then((responses) => _.flatten(responses))
   })
 }
 
@@ -31,7 +32,7 @@ const generateJson = async (team, handbook, subdomain) => {
   }.`
 
   const wp = new WPAPI({
-    endpoint: `https://${subdomain}wordpress.org/${team}/wp-json`
+    endpoint: `https://${subdomain}wordpress.org/${team}/wp-json`,
   })
   wp.handbooks = wp.registerRoute('wp/v2', `/${handbook}/(?P<id>)`)
 
@@ -39,7 +40,7 @@ const generateJson = async (team, handbook, subdomain) => {
     `Connecting to https://${subdomain}wordpress.org/${team}/wp-json/wp/v2/${handbook}/`
   )
 
-  getAll(wp.handbooks()).then(allPosts => {
+  getAll(wp.handbooks()).then((allPosts) => {
     const data = []
     let rootPath = ''
     for (const item of allPosts) {
@@ -59,13 +60,13 @@ const generateJson = async (team, handbook, subdomain) => {
         path: path,
         modified: item.modified_gmt,
         menu_order: item.menu_order,
-        parent: item.parent
+        parent: item.parent,
       })
     }
 
     const fileName = team ? `${team}-${handbook}` : handbook
 
-    fs.writeFile(`api/v1/${fileName}.json`, JSON.stringify(data), err => {
+    fs.writeFile(`api/v1/${fileName}.json`, JSON.stringify(data), (err) => {
       if (err) {
         throw err
       } else {
