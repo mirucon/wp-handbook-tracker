@@ -10,7 +10,7 @@
     "test": "prettier --list-different cli.js"
   },
   "dependencies": {
-    "commander": "2.20.3",
+    "commander": "6.2.1",
     "lodash": "4.17.20",
     "mkdirp": "0.5.5",
     "wpapi": "1.2.1"
