@@ -13,7 +13,7 @@
     "commander": "2.20.3",
     "lodash": "4.17.21",
     "mkdirp": "0.5.5",
-    "wpapi": "1.2.1"
+    "wpapi": "1.2.2"
   },
   "devDependencies": {
     "prettier": "2.1.2"
